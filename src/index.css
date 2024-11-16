@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+@keyframes prevSlide {
+	0% {
+		transform: translateX(-50%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+@keyframes nextSlide {
+	0% {
+		transform: translateX(50%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+@keyframes slideFromBottom {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.prev-slide-in {
+	animation: prevSlide 0.5s ease-in-out normal;
+	animation-fill-mode: backwards;
+}
+.next-slide-in {
+	animation: nextSlide 0.5s ease-in-out normal;
+	animation-fill-mode: forwards;
+}
+.slideOut {
+	animation: slideFromBottom 0.5s ease-in-out forwards;
+}
