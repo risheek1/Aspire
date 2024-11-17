@@ -7,11 +7,15 @@ import moment from 'moment';
 const AddCardBottomsheet = ({ closeBottomSheet }: { closeBottomSheet: () => void }) => {
 	const [newCardNumber, setNewCardNumber] = useState('');
 	const [error, setError] = useState('');
-	const { addCard, freezeCard } = useContext(CardDetailsContext);
+	const { addCard, cardDetails } = useContext(CardDetailsContext);
 	const randomDate = moment(
 		new Date(+new Date() - Math.floor(Math.random() * 10000000000)),
 	).format('MM/YY');
 	const onSubmit = () => {
+		if(cardDetails.filter((card)=>card.cardNumber==newCardNumber.match(/.{1,4}/g)?.join(' ')).length>0){
+			setError('Card Number already entered');
+			return;
+		}
 		if (newCardNumber.length < 16) {
 			setError('Card Number should be 16 digits');
 			return;
